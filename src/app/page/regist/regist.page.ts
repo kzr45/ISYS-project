@@ -30,7 +30,6 @@ export class RegistPage implements OnInit {
     // Call the registerUser method in AuthService to perform the registration
     this.authService.registerUser(this.user)
       .then((response: any) => {
-        // Assuming the backend returns an object with some identifiers when registration is successful (e.g., { insert: "success" })
         if (response.insert === "success") {
           // If registration is successful, display a success notification and navigate to the home page or another page
           this.notificationService.showSuccessNotification('Registration successful');
