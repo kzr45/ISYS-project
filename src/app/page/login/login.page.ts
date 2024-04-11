@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { AuthService } from '../../service/auth.service'; 
+import { NotificationService } from "../../service/notification.service";
 
 @Component({
   selector: 'app-login',
@@ -11,37 +12,37 @@ export class LoginPage {
   email!: string;
   password!: string;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private notificationService: NotificationService,) { } // Use AuthService
 
-  // 处理用户登录
+  // Handle user login
   login() {
-    // 构建登录数据对象
+    // Build the login data object
     const loginData = {
       email: this.email,
       password: this.password
     };
 
-    // 发起HTTP POST请求以进行登录验证
-    this.http.post<{ login: string, user?: any, message?: string }>('http://localhost:3060/api/login', loginData)
-      .subscribe(response => {
-        // 处理登录成功的情况
-        if (response.login === 'success') {
-          // 导航到另一个页面，例如主页
-          this.router.navigateByUrl('/tabs/tab1');
+    // Call the login method in AuthService to perform login
+    this.authService.login(loginData.email, loginData.password)
+      .then((response: any) => {
+        if (response.login === "success") {
+          // If login is successful, display a success notification and navigate to the home page or another page
+          this.notificationService.showSuccessNotification('Login successful');
+          this.router.navigate(['/tabs/tab1']);
         } else {
-          // 处理登录失败，显示错误消息
-          alert(response.message || 'Login failed');
+          // If the backend does not return the expected success flag, display an error notification
+          this.notificationService.showErrorNotification('Login failed, please try again');
         }
-      }, error => {
-        // 处理登录请求错误
-        console.error('Login error:', error);
-        alert('An error occurred');
+      })
+      .catch((error) => {
+        // Display an error notification when an error is caught
+        console.error("Login error:", error);
+        this.notificationService.showErrorNotification('An error occurred during the login process');
       });
   }
 
-  // 导航到注册页面
+  // Navigate to the registration page
   register() {
-    // 导航到注册页面，确保路由配置正确
-    this.router.navigate(['/regist']);
+    this.router.navigate(['/register']);
   }
 }

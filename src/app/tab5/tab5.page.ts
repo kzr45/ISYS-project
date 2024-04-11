@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router'; // 导入 Router
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-tab5',
@@ -14,6 +14,6 @@ export class Tab5Page {
     this.router.navigate(['/login']);
   }
   navigateToRegister() {
-    this.router.navigate(['/regist']); // 根据你的路由配置导航到注册页面
+    this.router.navigate(['/regist']);
   }
 }

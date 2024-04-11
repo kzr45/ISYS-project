@@ -8,10 +8,10 @@ export class NotificationService {
   constructor() { }
 
   showSuccessNotification(message: string) {
-    alert("Success: " + message); // 使用alert显示成功通知
+    alert("Success: " + message); 
   }
 
   showErrorNotification(message: string) {
-    alert("Error: " + message); // 使用alert显示错误通知
+    alert("Error: " + message);
   }
 }

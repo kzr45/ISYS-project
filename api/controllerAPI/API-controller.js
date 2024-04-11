@@ -1,16 +1,16 @@
-// 导入所需的模块
+// Import required modules
 var express = require("express");
-var bcrypt = require("bcrypt");
+// var bcrypt = require("bcrypt");
 var dbcon = require("../database");
 
-// 获取数据库连接
+// Get database connection
 var connection = dbcon.getConnection();
 connection.connect();
 
-// 创建路由器
+// Create router
 var router = express.Router();
 
-// 处理GET请求，返回user_db表的所有记录
+// Handle GET requests, return all records from user_db table
 router.get("/", (req, res) => {
     connection.query("SELECT * FROM user_db", (err, records, fields) => {
         if (err) {
@@ -22,16 +22,16 @@ router.get("/", (req, res) => {
     });
 });
 
-// 处理用户注册
+// Handle user registration
 router.post("/regist", (req, res) => {
     var { username, password, roleid, phone, nickname, gender, email } = req.body;
 
-    // 检查所有字段是否已提供
+    // Check if all fields are provided
     if (!username || !password || !roleid || !phone || !nickname || !gender || !email) {
         return res.status(400).send("All fields are required");
     }
 
-    // 执行数据库插入操作
+    // Perform database insert operation
     connection.query(
         "INSERT INTO user_db (username, password, roleid, phone, nickname, gender, email) VALUES (?, ?, ?, ?, ?, ?, ?)",
         [username, password, roleid, phone, nickname, gender, email],
@@ -46,7 +46,7 @@ router.post("/regist", (req, res) => {
     );
 });
 
-// 处理用户登录
+// Handle user login
 router.post("/login", (req, res) => {
     const { email, password } = req.body;
 
@@ -54,7 +54,7 @@ router.post("/login", (req, res) => {
         return res.status(400).send("Email and password are required");
     }
 
-    // 查询数据库以查找用户
+    // Query the database to find the user
     connection.query("SELECT * FROM user_db WHERE email = ?", [email], (err, results) => {
         if (err) {
             console.log("Error while fetching user: " + err);
@@ -72,7 +72,7 @@ router.post("/login", (req, res) => {
     });
 });
 
-// 处理更新用户信息请求
+// Handle request to update user information
 router.put("/updateUser", (req, res) => {
     var { username, password, roleid, phone, nickname, gender, email } = req.body;
     
@@ -80,10 +80,10 @@ router.put("/updateUser", (req, res) => {
         return res.status(400).send("All fields are required for updating a user");
     }
 
-    // 构建更新用户信息的SQL查询
+    // Build SQL query to update user information
     var updateQuery = `UPDATE user_db SET password = ?, roleid = ?, phone = ?, nickname = ?, gender = ?, email = ? WHERE username = ?`;
 
-    // 执行更新操作
+    // Perform the update operation
     connection.query(updateQuery, [password, roleid, phone, nickname, gender, email, username], (err, result) => {
         if (err) {
             console.error("Error while updating user: " + err);
@@ -98,5 +98,5 @@ router.put("/updateUser", (req, res) => {
     });
 });
 
-// 导出路由器
+// Export the router
 module.exports = router;

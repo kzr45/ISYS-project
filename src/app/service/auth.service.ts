@@ -10,25 +10,27 @@ export class AuthService {
 
   constructor(private http: HttpClient, private config: ConfigService) { }
 
-  // 更新用户信息的URL
+  // URL for updating user information
   private updateUserUrl = this.config.BASE_URL + "/api/updateUser";
 
-  // 更新用户信息
+  // URL for user login
+  private loginUrl = this.config.BASE_URL + "/api/login";
+
+  // Update user information
   updateUser(user: Users) {
     return this.http.put(this.updateUserUrl, user).toPromise();
   }
 
-  // 用户登录
-  private loginUrl = this.config.BASE_URL + "/public/login";
-  login(username: string, password: string) {
-    let parm = {
-      "username": username,
+  // User login
+  login(email: string, password: string) {
+    let params = {
+      "email": email, // Note that it has been changed from "username" to "email"
       "password": password
     };
-    return this.http.post(this.loginUrl, parm).toPromise();
+    return this.http.post(this.loginUrl, params).toPromise();
   }
 
-  // 注册新用户
+  // Register a new user
   registerUser(user: Users) {
     const registerUserUrl = this.config.getRegisterUserUrl();
     return this.http.post(registerUserUrl, user).toPromise();

@@ -1,13 +1,13 @@
 <ion-header>
   <ion-toolbar>
-    <!-- 添加返回按钮 -->
+    <!-- Add back button -->
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
 
-    <ion-title>用户注册</ion-title>
-    <!-- 为保存按钮添加点击事件 -->
-    <ion-button slot="end" size="small" (click)="register()">保存</ion-button>
+    <ion-title>User Registration</ion-title>
+    <!-- Add click event for the save button -->
+    <ion-button slot="end" size="small" (click)="register()">Save</ion-button>
 
   </ion-toolbar>
 </ion-header>
@@ -16,7 +16,7 @@
 
   <ion-list>
     <ion-item>
-      <ion-label position="stacked">用户名</ion-label>
+      <ion-label position="stacked">Username</ion-label>
       <ion-input [(ngModel)]="user.username"></ion-input>
     </ion-item>
 
@@ -26,39 +26,39 @@
     </ion-item>
 
     <ion-item>
-      <ion-label position="stacked">密码</ion-label>
+      <ion-label position="stacked">Password</ion-label>
       <ion-input type="password" [(ngModel)]="user.password"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="stacked">联系电话</ion-label>
+      <ion-label position="stacked">Phone</ion-label>
       <ion-input [(ngModel)]="user.phone"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="stacked">昵称</ion-label>
+      <ion-label position="stacked">Nickname</ion-label>
       <ion-input [(ngModel)]="user.nickname"></ion-input>
     </ion-item>
   </ion-list>
 
   <ion-item>
-    <ion-label>成为管理员</ion-label>
+    <ion-label>Become an administrator</ion-label>
     <ion-checkbox [(ngModel)]="isAdmin"></ion-checkbox>
   </ion-item>
 
 
-  <ion-list-header> <!-- 将 ion-list-header 移至外层 -->
-    <ion-label>性别</ion-label>
+  <ion-list-header> <!-- Move ion-list-header to the outer layer -->
+    <ion-label>Gender</ion-label>
   </ion-list-header>
 
   <ion-radio-group [(ngModel)]="user.gender">
     <ion-item>
-      <ion-label>男</ion-label>
+      <ion-label>Male</ion-label>
       <ion-radio value="M"></ion-radio>
     </ion-item>
 
     <ion-item>
-      <ion-label>女</ion-label>
+      <ion-label>Female</ion-label>
       <ion-radio value="F"></ion-radio>
     </ion-item>
   </ion-radio-group>

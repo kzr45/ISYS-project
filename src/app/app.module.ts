@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouteReuseStrategy, RouterModule } from '@angular/router'; // 注意，不再从 @angular/router 中导入 BrowserModule
-import { HttpClientModule } from '@angular/common/http'; // 导入 HttpClientModule
+import { RouteReuseStrategy, RouterModule } from '@angular/router'; 
+import { HttpClientModule } from '@angular/common/http'; 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
-import { AuthService } from './service/auth.service'; // 确保在这里导入 AuthService
+import { AuthService } from './service/auth.service'; 
 import { FormsModule } from '@angular/forms';
+import { HTTP } from '@ionic-native/http/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,15 +18,16 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    RouterModule, // 确保导入 RouterModule
-    HttpClientModule, // 添加 HttpClientModule
-    FormsModule
+    RouterModule, 
+    HttpClientModule, 
+    FormsModule,
   ],
   providers: [
     StatusBar,
     SplashScreen,
     Geolocation,
-    AuthService, // 确保在 providers 中提供 AuthService
+    AuthService,
+    HTTP,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

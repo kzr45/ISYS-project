@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    // 在应用启动时导航到登录页面
+  
     this.router.navigate(['/login']);
   }
 }

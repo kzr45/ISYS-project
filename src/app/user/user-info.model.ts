@@ -1,6 +1,6 @@
 export class Users {
   Usersid: string;
-  email: string; // 已修改为小写
+  email: string; 
   password: string;
   roleid: string;
   username: string;
@@ -10,7 +10,7 @@ export class Users {
 
   constructor() {
     this.Usersid = "";
-    this.email = ""; // 已修改为小写
+    this.email = "";
     this.password = "";
     this.roleid = "";
     this.username = "";

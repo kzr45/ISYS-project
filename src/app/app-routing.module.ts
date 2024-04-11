@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { IonicModule } from '@ionic/angular'; // 添加此行
-// 导入注册页面组件
+import { IonicModule } from '@ionic/angular';
+
 
 
 
@@ -39,7 +39,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
-    IonicModule // 添加 IonicModule
+    IonicModule
   ],
   exports: [RouterModule]
 })
