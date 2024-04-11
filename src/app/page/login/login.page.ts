@@ -43,6 +43,6 @@ export class LoginPage {
 
   // Navigate to the registration page
   register() {
-    this.router.navigate(['/register']);
+    this.router.navigate(['/regist']);
   }
 }
