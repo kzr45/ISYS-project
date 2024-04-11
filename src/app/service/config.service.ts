@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class ConfigService {
 
   
-  BASE_URL = 'http://localhost:3060';
+  BASE_URL = 'https://24091826.it.scu.edu.au';
   // 10.0.2.2:3060
   // BASE_URL = 'http://10.0.2.2:3060';
 
@@ -15,6 +15,6 @@ export class ConfigService {
 
   
   getRegisterUserUrl(): string {
-    return `${this.BASE_URL}/api/regist`;
+    return `${this.BASE_URL}/api1/regist`;
   }
 }

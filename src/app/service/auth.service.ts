@@ -11,10 +11,10 @@ export class AuthService {
   constructor(private http: HttpClient, private config: ConfigService) { }
 
   // URL for updating user information
-  private updateUserUrl = this.config.BASE_URL + "/api/updateUser";
+  private updateUserUrl = this.config.BASE_URL + "/api1/updateUser";
 
   // URL for user login
-  private loginUrl = this.config.BASE_URL + "/api/login";
+  private loginUrl = this.config.BASE_URL + "/api1/login";
 
   // Update user information
   updateUser(user: Users) {

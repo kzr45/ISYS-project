@@ -10,7 +10,7 @@ app.use(cors());
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: false }));
 
-app.use("/api", concertAPI);//API location
+app.use("/api1", concertAPI);//API location
 
 app.listen(3060);
 
