@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
 import { CheckInPage } from './check-in.page';
 
 const routes: Routes = [

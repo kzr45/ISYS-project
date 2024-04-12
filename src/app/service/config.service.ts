@@ -7,8 +7,7 @@ export class ConfigService {
 
   
   BASE_URL = 'https://24091826.it.scu.edu.au';
-  // 10.0.2.2:3060
-  // BASE_URL = 'http://10.0.2.2:3060';
+
 
 
   constructor() { }

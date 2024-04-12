@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { UserService } from '../user/user.service'; // Import UserService
-import { Users } from '../user/user-info.model'; // Import UserInfo model
+import { UserService } from '../service/user.service';
+import { Users } from '../service/user-info.model';
 
 @Component({
   selector: 'app-chat',
@@ -28,6 +28,6 @@ export class ChatPage implements OnInit {
   constructor(private route: ActivatedRoute, private userService: UserService) { }
 
   ngOnInit() {
-    
+
   }
 }

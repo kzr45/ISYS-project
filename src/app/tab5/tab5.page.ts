@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../service/auth.service'; 
-import { Users } from '../user/user-info.model'; 
+import { AuthService } from '../service/auth.service';
+import { Users } from '../service/user-info.model';
 
 @Component({
   selector: 'app-tab5',
