@@ -8,7 +8,7 @@ import { Users } from '../service/user-info.model';
   styleUrls: ['./tab5.page.scss'],
 })
 export class Tab5Page implements OnInit {
-  currentUser: Users | null = null; // 确保这里允许 Users 类型或 null
+  currentUser: Users | null = null; 
 
   constructor(private authService: AuthService) { }
 
