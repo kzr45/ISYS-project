@@ -1,19 +1,22 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router'; 
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../service/auth.service'; 
+import { Users } from '../user/user-info.model'; 
 
 @Component({
   selector: 'app-tab5',
-  templateUrl: 'tab5.page.html',
-  styleUrls: ['tab5.page.scss']
+  templateUrl: './tab5.page.html',
+  styleUrls: ['./tab5.page.scss'],
 })
-export class Tab5Page {
+export class Tab5Page implements OnInit {
+  currentUser: Users | null = null; // 确保这里允许 Users 类型或 null
 
-  constructor(private router: Router) { }
+  constructor(private authService: AuthService) { }
 
-  navigateToLogin() {
-    this.router.navigate(['/login']);
+  ngOnInit() {
+    this.getCurrentUser();
   }
-  navigateToRegister() {
-    this.router.navigate(['/regist']);
+
+  getCurrentUser() {
+    this.currentUser = this.authService.getCurrentUser();
   }
 }

@@ -22,6 +22,29 @@ router.get("/", (req, res) => {
     });
 });
 
+// Handle GET request to fetch user information by email
+router.get("/userInfo", (req, res) => {
+    const { email } = req.query; // 获取请求的查询参数中的email
+
+    if (!email) {
+        return res.status(400).send("Email is required");
+    }
+
+    // 查询数据库，获取与提供的email匹配的用户信息
+    connection.query("SELECT * FROM user_db WHERE email = ?", [email], (err, results) => {
+        if (err) {
+            console.log("Error while fetching user by email: " + err);
+            res.status(500).send("Error while fetching user by email");
+        } else {
+            if (results.length > 0) {
+                res.send(results[0]); // 假设email是唯一的，返回匹配的第一个用户信息
+            } else {
+                res.status(404).send("User not found");
+            }
+        }
+    });
+});
+
 // Handle user registration
 router.post("/regist", (req, res) => {
     var { username, password, roleid, phone, nickname, gender, email } = req.body;

@@ -7,6 +7,7 @@ import { Users } from "../user/user-info.model";
   providedIn: 'root'
 })
 export class AuthService {
+  private currentUser: Users | null = null;
 
   constructor(private http: HttpClient, private config: ConfigService) { }
 
@@ -24,10 +25,18 @@ export class AuthService {
   // User login
   login(email: string, password: string) {
     let params = {
-      "email": email, // Note that it has been changed from "username" to "email"
+      "email": email,
       "password": password
     };
-    return this.http.post(this.loginUrl, params).toPromise();
+    return this.http.post(this.loginUrl, params).toPromise().then((user: any) => {
+      this.currentUser = user;
+      return user;
+    });
+  }
+
+  //get user information to "My profile" page
+  getCurrentUser(): Users | null {
+    return this.currentUser;
   }
 
   // Register a new user
