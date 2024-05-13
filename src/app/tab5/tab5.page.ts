@@ -1,22 +1,35 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../service/auth.service';
-import { Users } from '../service/user-info.model';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router'; // 导入 Router
 
 @Component({
   selector: 'app-tab5',
-  templateUrl: './tab5.page.html',
-  styleUrls: ['./tab5.page.scss'],
+  templateUrl: 'tab5.page.html',
+  styleUrls: ['tab5.page.scss']
 })
-export class Tab5Page implements OnInit {
-  currentUser: Users | null = null; 
+export class Tab5Page {
+  user = {
+    name: 'John Doe',
+    age: 25,
+    gender: 'Male'
+  };
 
-  constructor(private authService: AuthService) { }
+  isEditable = false;  
 
-  ngOnInit() {
-    this.getCurrentUser();
+  constructor(private router: Router) { }
+
+  updateProfile() {
+    console.log('Updated Profile:', this.user);
+    this.isEditable = false;  
   }
 
-  getCurrentUser() {
-    this.currentUser = this.authService.getCurrentUser();
+  enableEditing() {
+    this.isEditable = true; 
+  }
+
+  navigateToLogin() {
+    this.router.navigate(['/login']);
+  }
+  navigateToRegister() {
+    this.router.navigate(['/regist']); // 根据你的路由配置导航到注册页面
   }
 }
